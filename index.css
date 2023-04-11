@@ -1,1 +1,47 @@
-/*# sourceMappingURL=index.css.map */
+body {
+  margin: 0px;
+  padding: 0px;
+  font-family: "sans-serif";
+}
+body header {
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  background-color: rgb(25, 25, 25);
+  color: rgb(250, 250, 250);
+}
+body header h1 {
+  margin-right: auto;
+  margin-left: 16px;
+}
+body header section {
+  margin-right: 64px;
+}
+body header section .dropDown {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+body header section .dropDown i {
+  margin-left: 8px;
+  margin-bottom: 4px;
+}
+body header section .dropdownContent {
+  display: none;
+}
+body header section .dropDown:hover .dropdownContent {
+  display: block;
+}
+body header .sortMenu .filterMenu {
+  display: flex;
+  flex-direction: column;
+}
+body #bookList {
+  display: flex;
+}
+body #addBook {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 0px 16px 0px;
+}/*# sourceMappingURL=index.css.map */
