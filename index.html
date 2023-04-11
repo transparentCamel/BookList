@@ -5,16 +5,59 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="index.css" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+		/>
 		<title>BookList</title>
 	</head>
 	<body>
-		<header>Book List</header>
-		<section id="searchBar">
-			<input type="text" placeholder="Search.." />
-			<button></button>
-		</section>
-		<section id="filterMenu"></section>
-		<section id="sortMenu"></section>
-		<section id="bookList"></section>
+		<header>
+			<h1>Book List</h1>
+			<section id="searchBar">
+				<input id="searchInput" type="text" placeholder="Search.." />
+				<button id="searchBtn">Press</button>
+			</section>
+			<section id="filterMenu">
+				<div class="dropDown">
+					<p>Filter</p>
+					<i class="fa-solid fa-sort-down"></i>
+				</div>
+				<div class="dropdownContent">
+					<a href="#">Category</a>
+					<a href="#">Author</a>
+				</div>
+			</section>
+			<section id="sortMenu">
+				<div class="dropDown">
+					<p>Sort By Price</p>
+					<i class="fa-solid fa-sort-down"></i>
+				</div>
+				<div class="dropdownContent">
+					<a href="#">Highest to Lowest</a>
+					<a href="#">Lowest to Highest</a>
+				</div>
+			</section>
+		</header>
+		<div id="bookList"></div>
+		<div id="addBook">
+			<button id="addBtn">Add Book</button>
+		</div>
+		<div id="addBookForm">
+			<form action="">
+				<label for="bookName">Name of the book:</label>
+				<input type="text" name="bookName" id="" />
+				<label for="author">Author:</label>
+				<input type="text" name="author" />
+				<label for="category">Category:</label>
+				<input type="text" name="category" id="" />
+				<label for="year">Year:</label>
+				<input type="date" name="year" />
+				<label for="price">Price:</label>
+				<input type="number" name="price" min="1" step="any" />
+				<label for="img">Image URL:</label>
+				<input type="url" />
+			</form>
+		</div>
 	</body>
 </html>
