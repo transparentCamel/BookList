@@ -8,14 +8,31 @@ function backgroundBlur() {
 function popUpVisible() {
 	const popUp = document.querySelector(".popUp");
 	popUp.style.display = "flex";
-	backgroundBlur();
 }
 
 function addBook() {
 	const addBtn = document.querySelector(".addBtn");
-	addBtn.addEventListener("click", popUpVisible);
+	addBtn.addEventListener("click", () => {
+		popUpVisible();
+		backgroundBlur();
+	});
 }
 
+function popUpInvisible() {
+	const popUp = document.querySelector(".popUp");
+	popUp.style.display = "none";
+	const bodyEl = document.querySelectorAll("body > :not(.popUp):not(.popUp *)");
+	for (let i = 0; i < bodyEl.length; i++) {
+		bodyEl[i].style.filter = "blur(0px)";
+	}
+}
+
+function closeForm() {
+	const x = document.querySelector("#close");
+	x.addEventListener("click", () => {
+		popUpInvisible();
+	});
+}
 function fetchFormData() {
 	const bookName = document.querySelector("#bookName").value;
 	const author = document.querySelector("#author").value;
@@ -49,3 +66,4 @@ function formValidation() {
 
 addBook();
 formValidation();
+closeForm();

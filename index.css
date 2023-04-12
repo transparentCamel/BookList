@@ -126,6 +126,13 @@ body .popUp {
   box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.3);
   background: #fff;
 }
+body .popUp i {
+  position: absolute;
+  left: 92%;
+  top: 5%;
+  font-size: 24px;
+  cursor: pointer;
+}
 body .popUp .addBookForm {
   display: flex;
   flex-wrap: wrap;
