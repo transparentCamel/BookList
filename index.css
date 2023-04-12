@@ -3,8 +3,8 @@ body {
   padding: 0px;
 }
 body nav {
-  background-color: rgb(25, 25, 25);
-  height: 50px;
+  background-color: #333;
+  height: 60px;
   display: flex;
   justify-content: right;
   align-items: center;
@@ -15,6 +15,7 @@ body nav h1 {
   margin-right: auto;
 }
 body nav ul {
+  height: 80px;
   list-style: none;
   display: flex;
   align-items: center;
@@ -26,8 +27,6 @@ body nav ul li {
   display: flex;
   align-items: center;
   cursor: pointer;
-  border-radius: 16px;
-  background-color: #333;
   padding-right: 16px;
   padding-left: 16px;
 }
@@ -42,7 +41,6 @@ body nav ul li input {
 }
 body nav ul li i {
   margin-left: 8px;
-  margin-top: 2px;
   font-size: 12px;
 }
 body nav ul li .searchBtn {
@@ -70,12 +68,12 @@ body nav ul li .dropDown ul {
   top: 100%;
   left: 0;
   background-color: rgb(25, 25, 25);
-  border-radius: 16px;
-  padding: 12px;
+  padding-top: 16px;
+  padding-bottom: 15px;
   background-color: #333;
 }
 body nav ul li .dropDown ul li {
-  margin: 0;
+  padding: 2px;
 }
 body nav ul li .dropDown ul li a {
   display: block;
@@ -90,11 +88,11 @@ body nav ul li .dropDown ul li:hover a {
   color: #333;
 }
 body nav ul li .dropDown .sortDrop {
-  transform: translate(-86px) translateY(25.5px);
-  width: 100px;
+  transform: translate(-86px) translateY(40px);
+  width: 148px;
 }
 body nav ul li .dropDown .filterDrop {
-  transform: translateX(-74px) translateY(25.5px);
+  transform: translateX(-74px) translateY(40px);
 }
 body nav ul li:hover .dropDown ul {
   display: block;
@@ -111,6 +109,10 @@ body nav ul .searchBar {
   display: flex;
   flex-direction: row;
   justify-content: center;
+}
+body nav ul #filterli,
+body nav ul #sortli {
+  height: 80px;
 }
 body .popUp {
   display: none;

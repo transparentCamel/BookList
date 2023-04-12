@@ -3,8 +3,8 @@ body {
 	padding: 0px;
 
 	nav {
-		background-color: rgb(25, 25, 25);
-		height: 50px;
+		background-color: #333;
+		height: 60px;
 		display: flex;
 		justify-content: right;
 		align-items: center;
@@ -16,6 +16,7 @@ body {
 		}
 
 		ul {
+			height: 80px;
 			list-style: none;
 			display: flex;
 			align-items: center;
@@ -27,8 +28,7 @@ body {
 				display: flex;
 				align-items: center;
 				cursor: pointer;
-				border-radius: 16px;
-				background-color: #333;
+
 				padding-right: 16px;
 				padding-left: 16px;
 
@@ -45,7 +45,6 @@ body {
 
 				i {
 					margin-left: 8px;
-					margin-top: 2px;
 					font-size: 12px;
 				}
 
@@ -77,12 +76,13 @@ body {
 						top: 100%;
 						left: 0;
 						background-color: rgb(25, 25, 25);
-						border-radius: 16px;
-						padding: 12px;
+
+						padding-top: 16px;
+						padding-bottom: 15px;
 						background-color: #333;
 
 						li {
-							margin: 0;
+							padding: 2px;
 
 							a {
 								display: block;
@@ -99,11 +99,12 @@ body {
 						}
 					}
 					.sortDrop {
-						transform: translate(-86px) translateY(25.5px);
-						width: 100px;
+						transform: translate(-86px) translateY(40px);
+
+						width: 148px;
 					}
 					.filterDrop {
-						transform: translateX(-74px) translateY(25.5px);
+						transform: translateX(-74px) translateY(40px);
 					}
 				}
 
@@ -124,6 +125,10 @@ body {
 				display: flex;
 				flex-direction: row;
 				justify-content: center;
+			}
+			#filterli,
+			#sortli {
+				height: 80px;
 			}
 		}
 	}
