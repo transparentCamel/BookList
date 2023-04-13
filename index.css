@@ -3,8 +3,8 @@ body {
   padding: 0px;
 }
 body nav {
-  background-color: rgb(25, 25, 25);
-  height: 50px;
+  background-color: #2c3e50;
+  height: 60px;
   display: flex;
   justify-content: right;
   align-items: center;
@@ -27,7 +27,7 @@ body nav ul li {
   align-items: center;
   cursor: pointer;
   border-radius: 16px;
-  background-color: #333;
+  background-color: #2c3e50;
   padding-right: 16px;
   padding-left: 16px;
 }
@@ -69,10 +69,9 @@ body nav ul li .dropDown ul {
   position: absolute;
   top: 100%;
   left: 0;
-  background-color: rgb(25, 25, 25);
-  border-radius: 16px;
-  padding: 12px;
-  background-color: #333;
+  background-color: #2c3e50;
+  padding-top: 16px;
+  padding-bottom: 15px;
 }
 body nav ul li .dropDown ul li {
   margin: 0;
@@ -87,7 +86,7 @@ body nav ul li .dropDown ul li:hover {
   background-color: #fff;
 }
 body nav ul li .dropDown ul li:hover a {
-  color: #333;
+  color: #2c3e50;
 }
 body nav ul li .dropDown .sortDrop {
   transform: translate(-86px) translateY(25.5px);
@@ -125,6 +124,8 @@ body .popUp {
   padding: 50px;
   box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.3);
   background: #fff;
+  z-index: 9999;
+  pointer-events: auto;
 }
 body .popUp i {
   position: absolute;
@@ -163,4 +164,16 @@ body .popUp .addBookForm input[type=submit] {
   background-color: #2c3e50;
   color: #fff;
   cursor: pointer;
+}
+body #listContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+body #listContainer .bookContainer {
+  width: 320px;
+  height: 500px;
+  display: flex;
+  justify-content: center;
 }/*# sourceMappingURL=index.css.map */
