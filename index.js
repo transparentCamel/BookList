@@ -76,6 +76,7 @@ function closeForm() {
 		popUpInvisible();
 	});
 }
+
 function fetchFormData() {
 	const bookName = document.querySelector("#bookName").value;
 	const author = document.querySelector("#author").value;
@@ -114,11 +115,20 @@ function formValidation() {
 	const form = document.querySelector(".addBookForm");
 	form.addEventListener("submit", (e) => {
 		e.preventDefault();
-		pushData(fetchFormData());
+		const formData = fetchFormData();
+		for (const value of Object.values(formData)) {
+			if (value === "") {
+				alert("Please fill in all fields");
+				return;
+			}
+		}
+		pushData(formData);
 		popUpInvisible();
 		checkLocalStorage();
+		form.reset();
 	});
 }
+
 function deleteFunc(deleteBtn, bookName, author) {
 	deleteBtn.addEventListener("click", () => {
 		const bookList = JSON.parse(localStorage.getItem("book-list")) || [];
