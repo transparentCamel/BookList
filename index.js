@@ -113,12 +113,22 @@ function formValidation() {
 		checkLocalStorage();
 	});
 }
-
-function createDeleteBtn(bookContainer) {
+function deleteFunc(deleteBtn, bookName, author) {
+	deleteBtn.addEventListener("click", () => {
+		const bookList = JSON.parse(localStorage.getItem("book-list")) || [];
+		const updatedBookList = bookList.filter(
+			(book) => Object.keys(book)[0] !== bookName && author
+		);
+		localStorage.setItem("book-list", JSON.stringify(updatedBookList));
+		checkLocalStorage();
+	});
+}
+function createDeleteBtn(bookContainer, bookName, author) {
 	const deleteBtn = document.createElement("button");
 	deleteBtn.classList.add("deleteBtn");
 	bookContainer.append(deleteBtn);
 	deleteBtn.textContent = "Delete";
+	deleteFunc(deleteBtn, bookName, author);
 }
 
 function createEditBtn(bookContainer) {
@@ -186,8 +196,8 @@ function bookDiv(bookData) {
 	createYear(textDiv, bookData);
 	createPrice(textDiv, bookData);
 	createImgContainer(imgDiv, bookData);
-	createEditBtn(btnDiv, bookData);
-	createDeleteBtn(btnDiv, bookData);
+	createEditBtn(btnDiv);
+	createDeleteBtn(btnDiv, bookData.bookName, bookData.author);
 
 	bookContainer.append(textDiv);
 	bookContainer.append(btnDiv);
