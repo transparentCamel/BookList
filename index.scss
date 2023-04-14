@@ -196,6 +196,63 @@ body {
 			height: 500px;
 			display: flex;
 			justify-content: center;
+			flex-direction: column;
+			.textDiv {
+				display: flex;
+				justify-content: space-between;
+				flex-wrap: wrap;
+			}
+			.btnDiv {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+
+				button {
+					border: none;
+					border-radius: 4px;
+					padding: 4px 8px 4px 8px;
+				}
+				.editBtn {
+					margin-right: 16px;
+					background-color: #508ac4;
+					color: #fff;
+
+					&:hover {
+						background-color: #2c3e50;
+
+						transition-property: background-color;
+						transition-duration: 0.2s;
+					}
+				}
+
+				.deleteBtn {
+					&:hover {
+						background-color: red;
+						color: #fff;
+						transition-property: background-color;
+						transition-duration: 0.2s;
+					}
+				}
+			}
+		}
+	}
+	.addContainer {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		.addBtn {
+			border: none;
+			border-radius: 4px;
+			padding: 4px 8px 4px 8px;
+			background-color: #508ac4;
+			color: #fff;
+
+			&:hover {
+				background-color: #2c3e50;
+
+				transition-property: background-color;
+				transition-duration: 0.2s;
+			}
 		}
 	}
 }

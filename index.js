@@ -44,7 +44,10 @@ function addBook() {
 	const addBookBtn = document.createElement("button");
 	addBookBtn.innerText = "Add a book";
 	addBookBtn.classList.add("addBtn");
-	document.body.append(addBookBtn);
+	const addBtnContainer = document.createElement("div");
+	addBtnContainer.classList.add("addContainer");
+	document.body.append(addBtnContainer);
+	addBtnContainer.append(addBookBtn);
 
 	addBookBtn.addEventListener("click", () => {
 		popUpVisible();
@@ -134,27 +137,27 @@ function createPrice(bookContainer, bookData) {
 	const priceEl = document.createElement("p");
 	priceEl.classList.add("priceEl");
 	bookContainer.append(priceEl);
-	priceEl.textContent = `${bookData.price}`;
+	priceEl.textContent = `Price: ${bookData.price}`;
 }
 function createYear(bookContainer, bookData) {
 	const yearEl = document.createElement("p");
 	yearEl.classList.add("yearEl");
 	bookContainer.append(yearEl);
-	yearEl.textContent = `${bookData.year}`;
+	yearEl.textContent = `Year: ${bookData.year}`;
 }
 
 function createCategory(bookContainer, bookData) {
 	const categoryEl = document.createElement("p");
 	categoryEl.classList.add("categoryEl");
 	bookContainer.append(categoryEl);
-	categoryEl.textContent = `${bookData.category}`;
+	categoryEl.textContent = `Category: ${bookData.category}`;
 }
 
 function createAuthor(bookContainer, bookData) {
 	const authorEl = document.createElement("p");
 	authorEl.classList.add("authorEl");
 	bookContainer.append(authorEl);
-	authorEl.textContent = `${bookData.author}`;
+	authorEl.textContent = `Author: ${bookData.author}`;
 }
 
 function crreateName(bookContainer) {
@@ -165,17 +168,27 @@ function crreateName(bookContainer) {
 function bookDiv(bookData) {
 	const listContainer = document.querySelector("#listContainer");
 	const bookContainer = document.createElement("div");
+	const imgDiv = document.createElement("div");
+	imgDiv.classList.add("imgDiv");
+	const btnDiv = document.createElement("div");
+	btnDiv.classList.add("btnDiv");
+	const textDiv = document.createElement("div");
+	textDiv.classList.add("textDiv");
 	bookContainer.classList.add("bookContainer");
 	listContainer.append(bookContainer);
 
-	crreateName(bookContainer, bookData);
-	createAuthor(bookContainer, bookData);
-	createCategory(bookContainer, bookData);
-	createYear(bookContainer, bookData);
-	createPrice(bookContainer, bookData);
-	createImgContainer(bookContainer, bookData);
-	createEditBtn(bookContainer, bookData);
-	createDeleteBtn(bookContainer, bookData);
+	bookContainer.append(imgDiv);
+	bookContainer.append(textDiv);
+	bookContainer.append(btnDiv);
+
+	crreateName(textDiv, bookData);
+	createAuthor(textDiv, bookData);
+	createCategory(textDiv, bookData);
+	createYear(textDiv, bookData);
+	createPrice(textDiv, bookData);
+	createImgContainer(imgDiv, bookData);
+	createEditBtn(btnDiv, bookData);
+	createDeleteBtn(btnDiv, bookData);
 }
 
 formValidation();

@@ -176,4 +176,53 @@ body #listContainer .bookContainer {
   height: 500px;
   display: flex;
   justify-content: center;
+  flex-direction: column;
+}
+body #listContainer .bookContainer .textDiv {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+body #listContainer .bookContainer .btnDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body #listContainer .bookContainer .btnDiv button {
+  border: none;
+  border-radius: 4px;
+  padding: 4px 8px 4px 8px;
+}
+body #listContainer .bookContainer .btnDiv .editBtn {
+  margin-right: 16px;
+  background-color: #508ac4;
+  color: #fff;
+}
+body #listContainer .bookContainer .btnDiv .editBtn:hover {
+  background-color: #2c3e50;
+  transition-property: background-color;
+  transition-duration: 0.2s;
+}
+body #listContainer .bookContainer .btnDiv .deleteBtn:hover {
+  background-color: red;
+  color: #fff;
+  transition-property: background-color;
+  transition-duration: 0.2s;
+}
+body .addContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body .addContainer .addBtn {
+  border: none;
+  border-radius: 4px;
+  padding: 4px 8px 4px 8px;
+  background-color: #508ac4;
+  color: #fff;
+}
+body .addContainer .addBtn:hover {
+  background-color: #2c3e50;
+  transition-property: background-color;
+  transition-duration: 0.2s;
 }/*# sourceMappingURL=index.css.map */
