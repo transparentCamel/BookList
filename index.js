@@ -1,3 +1,7 @@
+const nav = document.querySelector("nav");
+const body = document.querySelector("body");
+const noBooksContainer = document.createElement("div");
+
 function backgroundBlur() {
 	const bodyEl = document.querySelectorAll("body > :not(.popUp):not(.popUp *)");
 	for (let i = 0; i < bodyEl.length; i++) {
@@ -21,7 +25,7 @@ function checkLocalStorage() {
 		const errorMessage = document.createElement("h2");
 		errorMessage.classList.add("noBooks");
 		errorMessage.innerText = "There are no books added";
-		document.body.append(errorMessage);
+		noBooksContainer.prepend(errorMessage);
 		if (!document.querySelector(".addBtn")) {
 			addBook();
 		}
@@ -48,6 +52,8 @@ function addBook() {
 	addBtnContainer.classList.add("addContainer");
 	document.body.append(addBtnContainer);
 	addBtnContainer.append(addBookBtn);
+	noBooksContainer.append(addBtnContainer);
+	document.body.append(noBooksContainer);
 
 	addBookBtn.addEventListener("click", () => {
 		popUpVisible();
