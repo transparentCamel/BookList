@@ -131,7 +131,7 @@ function createEditBtn(bookContainer) {
 function createImgContainer(bookContainer, bookData) {
 	const bookImg = document.createElement("img");
 	bookContainer.prepend(bookImg);
-	//image content bookImg.textContent = `${bookData.img}`;
+	bookImg.src = bookData.imgUrl;
 }
 function createPrice(bookContainer, bookData) {
 	const priceEl = document.createElement("p");
@@ -160,9 +160,10 @@ function createAuthor(bookContainer, bookData) {
 	authorEl.textContent = `Author: ${bookData.author}`;
 }
 
-function crreateName(bookContainer) {
+function crreateName(bookContainer, bookData) {
 	const bookNameEl = document.createElement("h3");
 	bookContainer.append(bookNameEl);
+	bookNameEl.textContent = bookData.bookName;
 }
 
 function bookDiv(bookData) {
@@ -178,10 +179,8 @@ function bookDiv(bookData) {
 	listContainer.append(bookContainer);
 
 	bookContainer.append(imgDiv);
-	bookContainer.append(textDiv);
-	bookContainer.append(btnDiv);
 
-	crreateName(textDiv, bookData);
+	crreateName(bookContainer, bookData);
 	createAuthor(textDiv, bookData);
 	createCategory(textDiv, bookData);
 	createYear(textDiv, bookData);
@@ -189,6 +188,9 @@ function bookDiv(bookData) {
 	createImgContainer(imgDiv, bookData);
 	createEditBtn(btnDiv, bookData);
 	createDeleteBtn(btnDiv, bookData);
+
+	bookContainer.append(textDiv);
+	bookContainer.append(btnDiv);
 }
 
 formValidation();
