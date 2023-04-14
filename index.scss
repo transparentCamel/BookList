@@ -104,12 +104,12 @@ body {
 						}
 					}
 					.sortDrop {
-						transform: translate(-86px) translateY(29.5px);
+						transform: translate(-86px) translateY(17.5px);
 						width: 136px;
 						padding: 0px;
 					}
 					.filterDrop {
-						transform: translateX(-74px) translateY(29.5px);
+						transform: translateX(-74px) translateY(17.5px);
 						padding: 0px;
 					}
 				}
@@ -274,6 +274,7 @@ body {
 			}
 		}
 	}
+
 	.noBooks {
 		margin-top: 128px;
 		text-align: center;

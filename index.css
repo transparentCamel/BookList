@@ -95,12 +95,12 @@ body nav ul li .dropDown ul li:hover a {
   color: #2c3e50;
 }
 body nav ul li .dropDown .sortDrop {
-  transform: translate(-86px) translateY(29.5px);
+  transform: translate(-86px) translateY(17.5px);
   width: 136px;
   padding: 0px;
 }
 body nav ul li .dropDown .filterDrop {
-  transform: translateX(-74px) translateY(29.5px);
+  transform: translateX(-74px) translateY(17.5px);
   padding: 0px;
 }
 body nav ul li:hover .dropDown ul {
