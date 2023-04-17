@@ -18,6 +18,7 @@ body nav {
   width: 100vw;
 }
 body nav h1 {
+  cursor: pointer;
   margin-right: auto;
 }
 body nav ul:not(.sortDrop, .filterDrop) {
@@ -189,6 +190,9 @@ body #listContainer .bookContainer {
 }
 body #listContainer .bookContainer h3 {
   text-align: center;
+}
+body #listContainer .bookContainer .textDiv {
+  display: flex;
 }
 body #listContainer .bookContainer .imgDiv {
   display: flex;

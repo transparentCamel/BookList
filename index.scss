@@ -17,6 +17,7 @@ body {
 		width: 100vw;
 
 		h1 {
+			cursor: pointer;
 			margin-right: auto;
 		}
 		ul:not(.sortDrop, .filterDrop) {
@@ -207,6 +208,9 @@ body {
 			flex-direction: column;
 			h3 {
 				text-align: center;
+			}
+			.textDiv {
+				display: flex;
 			}
 			.imgDiv {
 				display: flex;

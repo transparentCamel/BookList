@@ -283,6 +283,63 @@ function sortAuthorDesc() {
 const author = document.querySelector(".author");
 author.addEventListener("click", sortAuthorDesc);
 
+function searchResult(matches) {
+	nav.style.zIndex = "9999";
+	const bookContainers = document.querySelectorAll(".bookContainer");
+	for (let i = 0; i < bookContainers.length; i++) {
+		bookContainers[i].remove();
+	}
+	if (matches.length === 0) {
+		const errorMessage = document.createElement("h2");
+		errorMessage.classList.add("noBooks");
+		errorMessage.innerText = "There are no books matching your search";
+		noBooksContainer.prepend(errorMessage);
+		if (!document.querySelector(".addBtn")) {
+			addBook();
+		}
+	} else {
+		if (document.querySelector(".noBooks")) {
+			document.querySelector(".noBooks").remove();
+		}
+		for (let i = 0; i < matches.length; i++) {
+			const bookData = matches[i][Object.keys(matches[i])[0]];
+			bookDiv(bookData);
+		}
+
+		if (!document.querySelector(".addBtn")) {
+			addBook();
+		}
+	}
+}
+
+function search() {
+	const input = document.querySelector("#searchInput").value;
+	const books = JSON.parse(localStorage.getItem("book-list"));
+	const matches = books.filter(
+		(book) =>
+			book[Object.keys(book)[0]].bookName
+				.toLowerCase()
+				.includes(input.toLowerCase()) ||
+			book[Object.keys(book)[0]].author
+				.toLowerCase()
+				.includes(input.toLowerCase()) ||
+			book[Object.keys(book)[0]].category
+				.toLowerCase()
+				.includes(input.toLowerCase()) ||
+			book[Object.keys(book)[0]].year.toString().includes(input) ||
+			book[Object.keys(book)[0]].price.toString().includes(input)
+	);
+
+	searchResult(matches);
+	document.querySelector("#searchInput").value = "";
+}
+
+const searchBtn = document.querySelector(".searchBtn");
+searchBtn.addEventListener("click", search);
+
+const logo = document.querySelector("#logo");
+logo.addEventListener("click", checkLocalStorage);
+
 formValidation();
 closeForm();
 
