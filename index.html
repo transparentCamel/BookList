@@ -15,7 +15,7 @@
 	</head>
 	<body>
 		<nav>
-			<h1>MyBooks</h1>
+			<h1 id="logo">MyBooks</h1>
 			<ul>
 				<li id="filterli">
 						<p>Filter</p>
@@ -46,7 +46,7 @@
 					
 				</li>
 				<li class="searchBar">
-					<input type="text" />
+					<input id="searchInput" type="text" />
 					<button class="searchBtn">
 						<i class="fas fa-search"></i>
 					</button>
@@ -75,11 +75,11 @@
 				</div>
 				<div class="inputField">
 					<label for="price">Price:</label>
-					<input type="text" name="price" id="price">
+					<input type="number" name="price" id="price">
 				</div>
 				<div class="inputField">
 					<label for="imgurl">Img URL:</label>
-					<input type="text" name="imgurl" id="imgUrl">
+					<input type="url" name="imgurl" id="imgUrl">
 				</div>
 				<input type="submit" value="Add a book">
 			</form>
