@@ -16,7 +16,7 @@ function popUpVisible() {
 
 function checkLocalStorage() {
 	const bookList = JSON.parse(localStorage.getItem("book-list")) || [];
-
+	nav.style.zIndex = "9999";
 	const bookContainers = document.querySelectorAll(".bookContainer");
 	for (let i = 0; i < bookContainers.length; i++) {
 		bookContainers[i].remove();
@@ -147,6 +147,10 @@ function createDeleteBtn(bookContainer, bookName, author) {
 	deleteFunc(deleteBtn, bookName, author);
 }
 
+function editFunc(editBtn) {
+	editBtn.addEventListener("click", () => {});
+}
+
 function createEditBtn(bookContainer) {
 	const editBtn = document.createElement("button");
 	editBtn.classList.add("editBtn");
@@ -218,6 +222,66 @@ function bookDiv(bookData) {
 	bookContainer.append(textDiv);
 	bookContainer.append(btnDiv);
 }
+const hiLo = document.querySelector(".hiLo");
+function sortHiLo() {
+	let bookList = JSON.parse(localStorage.getItem("book-list"));
+	if (!bookList || bookList.length === 0) {
+		return;
+	}
+	bookList = bookList.sort(
+		(a, b) => b[Object.keys(b)[0]].price - a[Object.keys(a)[0]].price
+	);
+	localStorage.setItem("book-list", JSON.stringify(bookList));
+	checkLocalStorage();
+}
+
+hiLo.addEventListener("click", sortHiLo);
+
+const loHi = document.querySelector(".loHi");
+
+function sortLoHi() {
+	let bookList = JSON.parse(localStorage.getItem("book-list"));
+	if (!bookList || bookList.length === 0) {
+		return;
+	}
+	bookList = bookList.sort(
+		(a, b) => a[Object.keys(a)[0]].price - b[Object.keys(b)[0]].price
+	);
+	localStorage.setItem("book-list", JSON.stringify(bookList));
+	checkLocalStorage();
+}
+
+loHi.addEventListener("click", sortLoHi);
+
+function sortCategoryDesc() {
+	let bookList = JSON.parse(localStorage.getItem("book-list"));
+	if (!bookList || bookList.length === 0) {
+		return;
+	}
+	bookList.sort((a, b) =>
+		b[Object.keys(b)[0]].category.localeCompare(a[Object.keys(a)[0]].category)
+	);
+	localStorage.setItem("book-list", JSON.stringify(bookList));
+	checkLocalStorage();
+}
+
+const category = document.querySelector(".category");
+category.addEventListener("click", sortCategoryDesc);
+
+function sortAuthorDesc() {
+	let bookList = JSON.parse(localStorage.getItem("book-list"));
+	if (!bookList || bookList.length === 0) {
+		return;
+	}
+	bookList.sort((a, b) =>
+		b[Object.keys(b)[0]].author.localeCompare(a[Object.keys(a)[0]].author)
+	);
+	localStorage.setItem("book-list", JSON.stringify(bookList));
+	checkLocalStorage();
+}
+
+const author = document.querySelector(".author");
+author.addEventListener("click", sortAuthorDesc);
 
 formValidation();
 closeForm();
