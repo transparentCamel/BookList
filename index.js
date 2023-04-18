@@ -1,6 +1,7 @@
 const nav = document.querySelector("nav");
 const body = document.querySelector("body");
 const noBooksContainer = document.createElement("div");
+const menu = document.querySelector("#menu");
 
 function backgroundBlur() {
 	const bodyEl = document.querySelectorAll("body > :not(.popUp):not(.popUp *)");
@@ -167,7 +168,7 @@ function createPrice(bookContainer, bookData) {
 	const priceEl = document.createElement("p");
 	priceEl.classList.add("priceEl");
 	bookContainer.append(priceEl);
-	priceEl.textContent = `Price: ${bookData.price}`;
+	priceEl.textContent = `Price: ${bookData.price} $`;
 }
 function createYear(bookContainer, bookData) {
 	const yearEl = document.createElement("p");
@@ -233,6 +234,7 @@ function sortHiLo() {
 	);
 	localStorage.setItem("book-list", JSON.stringify(bookList));
 	checkLocalStorage();
+	menu.style.transform = "translateY(-160px)";
 }
 
 hiLo.addEventListener("click", sortHiLo);
@@ -249,6 +251,7 @@ function sortLoHi() {
 	);
 	localStorage.setItem("book-list", JSON.stringify(bookList));
 	checkLocalStorage();
+	menu.style.transform = "translateY(-160px)";
 }
 
 loHi.addEventListener("click", sortLoHi);
@@ -263,6 +266,7 @@ function sortCategoryDesc() {
 	);
 	localStorage.setItem("book-list", JSON.stringify(bookList));
 	checkLocalStorage();
+	menu.style.transform = "translateY(-160px)";
 }
 
 const category = document.querySelector(".category");
@@ -278,6 +282,7 @@ function sortAuthorDesc() {
 	);
 	localStorage.setItem("book-list", JSON.stringify(bookList));
 	checkLocalStorage();
+	menu.style.transform = "translateY(-160px)";
 }
 
 const author = document.querySelector(".author");
@@ -329,6 +334,7 @@ function search() {
 			book[Object.keys(book)[0]].year.toString().includes(input) ||
 			book[Object.keys(book)[0]].price.toString().includes(input)
 	);
+	menu.style.transform = "translateY(-160px)";
 
 	searchResult(matches);
 	document.querySelector("#searchInput").value = "";
@@ -340,9 +346,60 @@ searchBtn.addEventListener("click", search);
 const logo = document.querySelector("#logo");
 logo.addEventListener("click", checkLocalStorage);
 
+const filterliMobile = document.querySelector("#filterliMobile");
+const filterUp = document.querySelector("#filterUp");
+const filterDown = document.querySelector("#filterDown");
+
+filterliMobile.addEventListener("click", () => {
+	const filterDropMobileList = document.querySelectorAll(".filterDropMobile");
+	filterDropMobileList.forEach((filterDropMobile) => {
+		if (filterDropMobile.style.display === "flex") {
+			filterDropMobile.style.display = "none";
+			filterDown.style.cssText = "display: none !important;";
+			filterUp.style.cssText = "display: block !important;";
+		} else {
+			filterDropMobile.style.display = "flex";
+			filterDown.style.cssText = "display: block !important;";
+			filterUp.style.cssText = "display: none !important;";
+		}
+	});
+});
+
+const sortliMobile = document.querySelector("#sortliMobile");
+const sortDown = document.querySelector("#sortDown");
+const sortUp = document.querySelector("#sortUp");
+
+sortliMobile.addEventListener("click", () => {
+	const sortDropMobileList = document.querySelectorAll(".sortDropMobile");
+	sortDropMobileList.forEach((sortDropMobile) => {
+		if (sortDropMobile.style.display === "flex") {
+			sortDropMobile.style.display = "none";
+			sortDown.style.cssText = "display: block !important;";
+			sortUp.style.cssText = "display: none !important;";
+		} else {
+			sortDropMobile.style.display = "flex";
+			sortDown.style.cssText = "display: none !important;";
+			sortUp.style.cssText = "display: block !important;";
+		}
+	});
+});
+
+const hamburger = document.querySelector("#hamburger");
+
+hamburger.addEventListener("click", () => {
+	if (menu.style.transform === "translateY(412px)") {
+		menu.style.transform = "translateY(-160px)";
+	} else {
+		menu.style.transform = "translateY(412px)";
+	}
+});
+
 formValidation();
 closeForm();
 
 window.onload = function () {
 	checkLocalStorage();
 };
+//for each classes padaryti kad veiktu funkcijos
+//edit funkcija
+//sutvarkyti mobile kad paspaudus hamburgeri is naujo rodytu default lista (neisplesta)

@@ -5,6 +5,111 @@ body {
 	margin: 0px;
 	padding: 0px;
 
+	@media only screen and (max-width: 768px) {
+		nav {
+			padding-left: 48px !important;
+			z-index: 9999;
+			.desktop {
+				display: none !important;
+			}
+			.mobile {
+				#hamburger {
+					display: flex;
+					flex-direction: column;
+					justify-content: space-between;
+					gap: 4px;
+					div {
+						height: 2px;
+						width: 24px;
+						background-color: #fff;
+					}
+				}
+				ul {
+					height: 770px;
+					position: absolute;
+					display: flex;
+					flex-direction: column;
+
+					left: 0 !important;
+					margin: 0px !important;
+					padding: 0px !important;
+					transform: translatey(-160px);
+					z-index: -10;
+					transition: 0.6s;
+
+					li {
+						margin: 0px;
+						padding: 0px;
+						width: 100vw;
+						display: flex;
+						justify-content: center;
+						align-items: center;
+
+						.fa-chevron-up {
+							display: none !important;
+						}
+						.fa-chevron-down {
+							display: block !important;
+						}
+					}
+					.filterDropMobile {
+						margin: 0px;
+						padding: 0px;
+						width: 100vw;
+						display: none;
+						justify-content: center;
+						align-items: center;
+					}
+					.sortDropMobile {
+						display: none;
+					}
+				}
+			}
+		}
+
+		.popUp {
+			width: 360px !important;
+			i {
+				transform: translateX(-10px);
+			}
+		}
+	}
+	@media only screen and (max-width: 480px) {
+		.popUp {
+			width: 180px !important;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 32px !important;
+			h2 {
+				font-size: 20px !important;
+				text-align: center;
+			}
+			i {
+				transform: translateX(-16px);
+				font-size: 16px !important;
+			}
+			form {
+				div {
+					font-size: 14px;
+					input {
+						height: 4px !important;
+						width: 48px !important;
+					}
+				}
+			}
+		}
+	}
+	@media screen and (min-width: 769px) {
+		nav {
+			.mobile {
+				display: none !important;
+			}
+			.desktop {
+				display: flex !important;
+			}
+		}
+	}
 	nav {
 		background-color: #2c3e50;
 		height: 60px;
@@ -15,10 +120,13 @@ body {
 		color: rgb(250, 250, 250);
 		position: fixed;
 		width: 100vw;
-
+		top: 0;
 		h1 {
 			cursor: pointer;
 			margin-right: auto;
+		}
+		.desktop {
+			display: block;
 		}
 		ul:not(.sortDrop, .filterDrop) {
 			margin-right: 96px;
@@ -43,7 +151,7 @@ body {
 					outline: none;
 					background-color: transparent;
 					color: inherit;
-
+					max-width: 160px;
 					font: inherit;
 					border-bottom: 1px solid rgb(250, 250, 250);
 					padding: 8px;

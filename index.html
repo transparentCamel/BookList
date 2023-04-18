@@ -16,7 +16,46 @@
 	<body>
 		<nav>
 			<h1 id="logo">MyBooks</h1>
-			<ul>
+			<ul class="mobile">
+				<div id="hamburger">
+					<div></div>
+					<div></div>
+					<div></div>
+				</div>
+				
+				<ul id="menu">
+					<li class="searchBar">
+						<input id="searchInput" type="text" />
+						<button class="searchBtn">
+							<i class="fas fa-search"></i>
+						</button>
+					</li>
+					
+					<li id="filterliMobile">
+							<p>Filter</p>
+							<i class="fa-solid fa-chevron-down" id="filterUp"></i>
+							<i class="fa-solid fa-chevron-up" id="filterDown"></i>
+					</li>	
+					<li class="filterDropMobile category">
+							<p>Category</p>	
+					</li>
+					<li class="filterDropMobile author">
+						<p>Author</p>
+					</li>	
+					<li id="sortliMobile">
+						<p>Sort By</p>
+						<i class="fa-solid fa-chevron-down" id="sortDown"></i>
+						<i class="fa-solid fa-chevron-up" id="sortUp"></i>	
+					</li>
+					<li class="sortDropMobile hiLo">
+						<p>Price: High-Low</p>	
+				</li>
+				<li class="sortDropMobile loHi">
+					<p>Price: Low-High</p>
+				</li>	
+			</ul>
+			</ul>
+			<ul class="desktop">
 				<li id="filterli">
 						<p>Filter</p>
 						<i class="fa-solid fa-chevron-down"></i>
@@ -58,7 +97,7 @@
 			<i class=" fa-solid fa-xmark" id="close"></i>
 			<form class="addBookForm">
 				<div class="inputField">
-					<label for="bookName">Name of the book:</label>
+					<label for="bookName">Title:</label>
 					<input type="text" name="bookName" id="bookName">
 				</div>
 				<div class="inputField">
