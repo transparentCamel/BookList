@@ -182,7 +182,7 @@ function editForm(bookName) {
 	editPopUpVisible();
 	backgroundBlur();
 }
-function editFormValidation() {
+function editFormValidation(bookName) {
 	const form = document.querySelector(".editBookForm");
 	form.addEventListener("submit", (e) => {
 		e.preventDefault();
@@ -194,13 +194,16 @@ function editFormValidation() {
 				return;
 			}
 		}
-		const bookName = document.querySelector("#editbookName").value;
 
 		const existingBookIndex = bookList.findIndex(
 			(book) => Object.keys(book)[0] === bookName
 		);
+		const newBookName = document.querySelector("#editbookName").value; // Get the new book name from the form input
 		if (existingBookIndex !== -1) {
-			bookList[existingBookIndex][bookName] = formData;
+			bookList[existingBookIndex][newBookName] =
+				bookList[existingBookIndex][bookName];
+			delete bookList[existingBookIndex][bookName];
+			bookList[existingBookIndex][newBookName] = formData;
 			localStorage.setItem("book-list", JSON.stringify(bookList));
 			editPopUpInvisible();
 			checkLocalStorage();
@@ -215,6 +218,7 @@ function deleteFunc(deleteBtn, bookName, author) {
 		);
 		localStorage.setItem("book-list", JSON.stringify(updatedBookList));
 		checkLocalStorage();
+		location.reload();
 	});
 }
 function createDeleteBtn(bookContainer, bookName, author) {
@@ -228,6 +232,7 @@ function createDeleteBtn(bookContainer, bookName, author) {
 function editFunc(editBtn, bookName) {
 	editBtn.addEventListener("click", () => {
 		editForm(bookName);
+		editFormValidation(bookName);
 		backgroundBlur();
 		editPopUpVisible();
 	});
@@ -505,7 +510,6 @@ hamburger.addEventListener("click", () => {
 	}
 });
 
-editFormValidation();
 formValidation();
 closeForm();
 
