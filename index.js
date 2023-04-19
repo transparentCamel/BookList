@@ -4,7 +4,9 @@ const noBooksContainer = document.createElement("div");
 const menu = document.querySelector("#menu");
 
 function backgroundBlur() {
-	const bodyEl = document.querySelectorAll("body > :not(.popUp):not(.popUp *)");
+	const bodyEl = document.querySelectorAll(
+		"body > :not(.popUp,.editPopUp):not(.popUp, .editPopUp *)"
+	);
 	for (let i = 0; i < bodyEl.length; i++) {
 		bodyEl[i].style.filter = "blur(20px)";
 	}
@@ -13,6 +15,10 @@ function backgroundBlur() {
 function popUpVisible() {
 	const popUp = document.querySelector(".popUp");
 	popUp.style.display = "flex";
+}
+function editPopUpVisible() {
+	const editPopUp = document.querySelector(".editPopUp");
+	editPopUp.style.display = "flex";
 }
 
 function checkLocalStorage() {
@@ -71,10 +77,24 @@ function popUpInvisible() {
 	}
 }
 
+function editPopUpInvisible() {
+	const editPopUp = document.querySelector(".editPopUp");
+	editPopUp.style.display = "none";
+	const bodyEl = document.querySelectorAll(
+		"body > :not(.editPopUp):not(.editPopUp *)"
+	);
+	for (let i = 0; i < bodyEl.length; i++) {
+		bodyEl[i].style.filter = "blur(0px)";
+	}
+}
+
 function closeForm() {
-	const x = document.querySelector("#close");
-	x.addEventListener("click", () => {
-		popUpInvisible();
+	const x = document.querySelectorAll(".close");
+	x.forEach((element) => {
+		element.addEventListener("click", () => {
+			popUpInvisible();
+			editPopUpInvisible();
+		});
 	});
 }
 
@@ -85,6 +105,24 @@ function fetchFormData() {
 	const year = document.querySelector("#year").value;
 	const price = document.querySelector("#price").value;
 	const imgUrl = document.querySelector("#imgUrl").value;
+
+	return {
+		bookName,
+		author,
+		category,
+		year,
+		price,
+		imgUrl,
+	};
+}
+
+function fetchEditFormData() {
+	const bookName = document.querySelector("#editbookName").value;
+	const author = document.querySelector("#editauthor").value;
+	const category = document.querySelector("#editcategory").value;
+	const year = document.querySelector("#edityear").value;
+	const price = document.querySelector("#editprice").value;
+	const imgUrl = document.querySelector("#editimgUrl").value;
 
 	return {
 		bookName,
@@ -129,6 +167,47 @@ function formValidation() {
 		form.reset();
 	});
 }
+function editForm(bookName) {
+	const bookList = JSON.parse(localStorage.getItem("book-list")) || [];
+	const bookData = bookList.find((book) => Object.keys(book)[0] === bookName)[
+		bookName
+	];
+
+	document.querySelector("#editbookName").value = bookData.bookName;
+	document.querySelector("#editauthor").value = bookData.author;
+	document.querySelector("#editcategory").value = bookData.category;
+	document.querySelector("#edityear").value = bookData.year;
+	document.querySelector("#editprice").value = bookData.price;
+	document.querySelector("#editimgUrl").value = bookData.imgUrl;
+
+	editPopUpVisible();
+	backgroundBlur();
+}
+function editFormValidation() {
+	const form = document.querySelector(".editBookForm");
+	form.addEventListener("submit", (e) => {
+		e.preventDefault();
+
+		const formData = fetchEditFormData();
+		for (const value of Object.values(formData)) {
+			if (value === "") {
+				alert("Please fill in all fields");
+				return;
+			}
+		}
+		const bookName = document.querySelector("#editbookName").value;
+		const bookList = JSON.parse(localStorage.getItem("book-list")) || [];
+		const existingBookIndex = bookList.findIndex(
+			(book) => Object.keys(book)[0] === bookName
+		);
+		if (existingBookIndex !== -1) {
+			bookList[existingBookIndex][bookName] = formData;
+			localStorage.setItem("book-list", JSON.stringify(bookList));
+			editPopUpInvisible();
+			checkLocalStorage();
+		}
+	});
+}
 
 function deleteFunc(deleteBtn, bookName, author) {
 	deleteBtn.addEventListener("click", () => {
@@ -148,15 +227,20 @@ function createDeleteBtn(bookContainer, bookName, author) {
 	deleteFunc(deleteBtn, bookName, author);
 }
 
-function editFunc(editBtn) {
-	editBtn.addEventListener("click", () => {});
+function editFunc(editBtn, bookName) {
+	editBtn.addEventListener("click", () => {
+		editForm(bookName);
+		backgroundBlur();
+		editPopUpVisible();
+	});
 }
 
-function createEditBtn(bookContainer) {
+function createEditBtn(bookContainer, bookName) {
 	const editBtn = document.createElement("button");
 	editBtn.classList.add("editBtn");
 	bookContainer.append(editBtn);
 	editBtn.textContent = "Edit";
+	editFunc(editBtn, bookName);
 }
 
 function createImgContainer(bookContainer, bookData) {
@@ -217,7 +301,7 @@ function bookDiv(bookData) {
 	createYear(textDiv, bookData);
 	createPrice(textDiv, bookData);
 	createImgContainer(imgDiv, bookData);
-	createEditBtn(btnDiv);
+	createEditBtn(btnDiv, bookData.bookName);
 	createDeleteBtn(btnDiv, bookData.bookName, bookData.author);
 
 	bookContainer.append(textDiv);
@@ -394,6 +478,7 @@ hamburger.addEventListener("click", () => {
 	}
 });
 
+editFormValidation();
 formValidation();
 closeForm();
 

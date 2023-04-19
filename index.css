@@ -62,33 +62,40 @@ body {
   body nav .mobile ul .sortDropMobile {
     display: none;
   }
-  body .popUp {
+  body .popUp,
+  body .editPopUp {
     width: 360px !important;
   }
-  body .popUp i {
+  body .popUp i,
+  body .editPopUp i {
     transform: translateX(-10px);
   }
 }
 @media only screen and (max-width: 480px) {
-  body .popUp {
+  body .popUp,
+  body .editPopUp {
     width: 180px !important;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 32px !important;
   }
-  body .popUp h2 {
+  body .popUp h2,
+  body .editPopUp h2 {
     font-size: 20px !important;
     text-align: center;
   }
-  body .popUp i {
+  body .popUp i,
+  body .editPopUp i {
     transform: translateX(-16px);
     font-size: 16px !important;
   }
-  body .popUp form div {
+  body .popUp form div,
+  body .editPopUp form div {
     font-size: 14px;
   }
-  body .popUp form div input {
+  body .popUp form div input,
+  body .editPopUp form div input {
     height: 4px !important;
     width: 48px !important;
   }
@@ -220,7 +227,8 @@ body nav ul .searchBar {
   flex-direction: row;
   justify-content: center;
 }
-body .popUp {
+body .popUp,
+body .editPopUp {
   display: none;
   flex-direction: column;
   align-items: center;
@@ -236,28 +244,33 @@ body .popUp {
   z-index: 9999;
   pointer-events: auto;
 }
-body .popUp i {
+body .popUp i,
+body .editPopUp i {
   position: absolute;
   left: 92%;
   top: 5%;
   font-size: 24px;
   cursor: pointer;
 }
-body .popUp .addBookForm {
+body .popUp form,
+body .editPopUp form {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
-body .popUp .addBookForm .inputField {
+body .popUp form .inputField,
+body .editPopUp form .inputField {
   flex: 0 0 50%;
   margin-bottom: 20px;
   transform: translateX(20px);
 }
-body .popUp .addBookForm .inputField label {
+body .popUp form .inputField label,
+body .editPopUp form .inputField label {
   display: block;
   margin-bottom: 5px;
 }
-body .popUp .addBookForm .inputField input {
+body .popUp form .inputField input,
+body .editPopUp form .inputField input {
   display: block;
   width: 100%;
   padding: 10px;
@@ -265,7 +278,8 @@ body .popUp .addBookForm .inputField input {
   border: 1px solid #ccc;
   width: 80%;
 }
-body .popUp .addBookForm input[type=submit] {
+body .popUp form input[type=submit],
+body .editPopUp form input[type=submit] {
   margin-top: 20px;
   padding: 10px;
   border-radius: 5px;
