@@ -402,30 +402,39 @@ function searchResult(matches) {
 }
 
 function search() {
-	const input = document.querySelector("#searchInput").value;
+	const inputs = document.querySelectorAll(".searchInput");
+	const nonEmptyValues = Array.from(inputs)
+		.map((input) => input.value.trim())
+		.filter((value) => value !== "");
+
 	const books = JSON.parse(localStorage.getItem("book-list"));
 	const matches = books.filter(
 		(book) =>
 			book[Object.keys(book)[0]].bookName
 				.toLowerCase()
-				.includes(input.toLowerCase()) ||
+				.includes(nonEmptyValues.map((value) => value.toLowerCase())) ||
 			book[Object.keys(book)[0]].author
 				.toLowerCase()
-				.includes(input.toLowerCase()) ||
+				.includes(nonEmptyValues.map((value) => value.toLowerCase())) ||
 			book[Object.keys(book)[0]].category
 				.toLowerCase()
-				.includes(input.toLowerCase()) ||
-			book[Object.keys(book)[0]].year.toString().includes(input) ||
-			book[Object.keys(book)[0]].price.toString().includes(input)
+				.includes(nonEmptyValues.map((value) => value.toLowerCase())) ||
+			book[Object.keys(book)[0]].year.toString().includes(nonEmptyValues) ||
+			book[Object.keys(book)[0]].price.toString().includes(nonEmptyValues)
 	);
 	menu.style.transform = "translateY(-160px)";
 
 	searchResult(matches);
-	document.querySelector("#searchInput").value = "";
+	const searchInputs = document.querySelectorAll(".searchInput");
+	searchInputs.forEach((input) => {
+		input.value = "";
+	});
 }
 
-const searchBtn = document.querySelector(".searchBtn");
-searchBtn.addEventListener("click", search);
+const searchBtn = document.querySelectorAll(".searchBtn");
+searchBtn.forEach((element) => {
+	element.addEventListener("click", search);
+});
 
 const logo = document.querySelector("#logo");
 logo.addEventListener("click", checkLocalStorage);
@@ -486,5 +495,4 @@ window.onload = function () {
 	checkLocalStorage();
 };
 //for each classes padaryti kad veiktu funkcijos
-//edit funkcija
 //sutvarkyti mobile kad paspaudus hamburgeri is naujo rodytu default lista (neisplesta)
