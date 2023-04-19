@@ -307,7 +307,7 @@ function bookDiv(bookData) {
 	bookContainer.append(textDiv);
 	bookContainer.append(btnDiv);
 }
-const hiLo = document.querySelector(".hiLo");
+const hiLoElements = document.querySelectorAll(".hiLo");
 function sortHiLo() {
 	let bookList = JSON.parse(localStorage.getItem("book-list"));
 	if (!bookList || bookList.length === 0) {
@@ -321,9 +321,11 @@ function sortHiLo() {
 	menu.style.transform = "translateY(-160px)";
 }
 
-hiLo.addEventListener("click", sortHiLo);
+hiLoElements.forEach((hiLoElement) => {
+	hiLoElement.addEventListener("click", sortHiLo);
+});
 
-const loHi = document.querySelector(".loHi");
+const loHiElements = document.querySelectorAll(".loHi");
 
 function sortLoHi() {
 	let bookList = JSON.parse(localStorage.getItem("book-list"));
@@ -338,7 +340,9 @@ function sortLoHi() {
 	menu.style.transform = "translateY(-160px)";
 }
 
-loHi.addEventListener("click", sortLoHi);
+loHiElements.forEach((loHiElement) => {
+	loHiElement.addEventListener("click", sortLoHi);
+});
 
 function sortCategoryDesc() {
 	let bookList = JSON.parse(localStorage.getItem("book-list"));
@@ -353,8 +357,11 @@ function sortCategoryDesc() {
 	menu.style.transform = "translateY(-160px)";
 }
 
-const category = document.querySelector(".category");
-category.addEventListener("click", sortCategoryDesc);
+const categoryEls = document.querySelectorAll(".category");
+
+categoryEls.forEach((el) => {
+	el.addEventListener("click", sortCategoryDesc);
+});
 
 function sortAuthorDesc() {
 	let bookList = JSON.parse(localStorage.getItem("book-list"));
@@ -369,8 +376,11 @@ function sortAuthorDesc() {
 	menu.style.transform = "translateY(-160px)";
 }
 
-const author = document.querySelector(".author");
-author.addEventListener("click", sortAuthorDesc);
+const authorEls = document.querySelectorAll(".author");
+
+authorEls.forEach((el) => {
+	el.addEventListener("click", sortAuthorDesc);
+});
 
 function searchResult(matches) {
 	nav.style.zIndex = "9999";
