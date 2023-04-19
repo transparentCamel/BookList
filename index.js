@@ -144,7 +144,7 @@ function pushData(formData) {
 	if (existingBookIndex === -1) {
 		bookList.push({ [bookName]: formData });
 	} else {
-		bookList[existingBookIndex][bookName] = formData;
+		alert("This book already exists");
 	}
 
 	localStorage.setItem("book-list", JSON.stringify(bookList));
@@ -254,28 +254,30 @@ function createImgContainer(bookContainer, bookData) {
 function createPrice(bookContainer, bookData) {
 	const priceEl = document.createElement("p");
 	priceEl.classList.add("priceEl");
+
 	bookContainer.append(priceEl);
-	priceEl.textContent = `Price: ${bookData.price} $`;
+	priceEl.innerHTML = `Price<br><br>${bookData.price} $`;
 }
 function createYear(bookContainer, bookData) {
 	const yearEl = document.createElement("p");
 	yearEl.classList.add("yearEl");
 	bookContainer.append(yearEl);
-	yearEl.textContent = `Year: ${bookData.year}`;
+	yearEl.innerHTML = `Year<br><br> ${bookData.year}`;
 }
 
 function createCategory(bookContainer, bookData) {
 	const categoryEl = document.createElement("p");
 	categoryEl.classList.add("categoryEl");
 	bookContainer.append(categoryEl);
-	categoryEl.textContent = `Category: ${bookData.category}`;
+	categoryEl.innerHTML = `Category<br><br> ${bookData.category}`;
 }
 
 function createAuthor(bookContainer, bookData) {
 	const authorEl = document.createElement("p");
+
 	authorEl.classList.add("authorEl");
 	bookContainer.append(authorEl);
-	authorEl.textContent = `Author: ${bookData.author}`;
+	authorEl.innerHTML = `Author <br><br>${bookData.author}`;
 }
 
 function crreateName(bookContainer, bookData) {

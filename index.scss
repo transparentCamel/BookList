@@ -317,11 +317,21 @@ body {
 			display: flex;
 			justify-content: center;
 			flex-direction: column;
+			border-radius: 8px;
+			background-color: #1eaabc;
+			padding: 0px 16px 0px 16px;
+			color: #fff;
 			h3 {
 				text-align: center;
 			}
 			.textDiv {
 				display: flex;
+				justify-content: center;
+				align-items: center;
+				gap: 16px;
+				p {
+					text-align: center;
+				}
 			}
 			.imgDiv {
 				display: flex;

@@ -301,12 +301,22 @@ body #listContainer .bookContainer {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  border-radius: 8px;
+  background-color: #1eaabc;
+  padding: 0px 16px 0px 16px;
+  color: #fff;
 }
 body #listContainer .bookContainer h3 {
   text-align: center;
 }
 body #listContainer .bookContainer .textDiv {
   display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+body #listContainer .bookContainer .textDiv p {
+  text-align: center;
 }
 body #listContainer .bookContainer .imgDiv {
   display: flex;
