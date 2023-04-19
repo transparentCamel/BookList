@@ -494,6 +494,19 @@ hamburger.addEventListener("click", () => {
 		menu.style.transform = "translateY(-160px)";
 	} else {
 		menu.style.transform = "translateY(412px)";
+		const sortDropMobileList = document.querySelectorAll(".sortDropMobile");
+		sortDropMobileList.forEach((sortDropMobile) => {
+			sortDropMobile.style.display = "none";
+			sortDown.style.cssText = "display: block !important;";
+			sortUp.style.cssText = "display: none !important;";
+		});
+		const filterDropMobileList = document.querySelectorAll(".filterDropMobile");
+
+		filterDropMobileList.forEach((filterDropMobile) => {
+			filterDropMobile.style.display = "none";
+			filterDown.style.cssText = "display: none !important;";
+			filterUp.style.cssText = "display: block !important;";
+		});
 	}
 });
 
@@ -504,5 +517,5 @@ closeForm();
 window.onload = function () {
 	checkLocalStorage();
 };
-//for each classes padaryti kad veiktu funkcijos
+
 //sutvarkyti mobile kad paspaudus hamburgeri is naujo rodytu default lista (neisplesta)
