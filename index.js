@@ -390,6 +390,9 @@ function searchResult(matches) {
 		bookContainers[i].remove();
 	}
 	if (matches.length === 0) {
+		if (document.querySelector(".noBooks")) {
+			return;
+		}
 		const errorMessage = document.createElement("h2");
 		errorMessage.classList.add("noBooks");
 		errorMessage.innerText = "There are no books matching your search";
@@ -398,9 +401,6 @@ function searchResult(matches) {
 			addBook();
 		}
 	} else {
-		if (document.querySelector(".noBooks")) {
-			document.querySelector(".noBooks").remove();
-		}
 		for (let i = 0; i < matches.length; i++) {
 			const bookData = matches[i][Object.keys(matches[i])[0]];
 			bookDiv(bookData);
