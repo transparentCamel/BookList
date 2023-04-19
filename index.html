@@ -94,7 +94,7 @@
 		</nav>
 		<div class="popUp">
 			<h2>Add a book to collection!</h2>
-			<i class=" fa-solid fa-xmark" id="close"></i>
+			<i class=" fa-solid fa-xmark close"></i>
 			<form class="addBookForm">
 				<div class="inputField">
 					<label for="bookName">Title:</label>
@@ -121,6 +121,38 @@
 					<input type="url" name="imgurl" id="imgUrl">
 				</div>
 				<input type="submit" value="Add a book">
+			</form>
+			
+		</div>
+		<div class="editPopUp">
+			<h2>Edit your book</h2>
+			<i class=" fa-solid fa-xmark close"></i>
+			<form class="editBookForm">
+				<div class="inputField">
+					<label for="bookName">Title:</label>
+					<input type="text" name="bookName" id="editbookName">
+				</div>
+				<div class="inputField">
+					<label for="author">Author:</label>
+					<input type="text" name="author" id="editauthor">
+				</div>
+				<div class="inputField">
+					<label for="category">Category:</label>
+					<input type="text" name="category" id="editcategory">
+				</div>
+				<div class="inputField">
+					<label for="year">Year:</label>
+					<input type="number" name="year" id="edityear">
+				</div>
+				<div class="inputField">
+					<label for="price">Price:</label>
+					<input type="number" name="price" id="editprice">
+				</div>
+				<div class="inputField">
+					<label for="imgurl">Img URL:</label>
+					<input type="url" name="imgurl" id="editimgUrl">
+				</div>
+				<input type="submit" value="Confirm">
 			</form>
 			
 		</div>
