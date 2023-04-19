@@ -517,5 +517,3 @@ closeForm();
 window.onload = function () {
 	checkLocalStorage();
 };
-
-//sutvarkyti mobile kad paspaudus hamburgeri is naujo rodytu default lista (neisplesta)
