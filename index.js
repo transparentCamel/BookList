@@ -1,3 +1,4 @@
+let bookList = JSON.parse(localStorage.getItem("book-list")) || [];
 const nav = document.querySelector("nav");
 const body = document.querySelector("body");
 const noBooksContainer = document.createElement("div");
@@ -22,7 +23,6 @@ function editPopUpVisible() {
 }
 
 function checkLocalStorage() {
-	const bookList = JSON.parse(localStorage.getItem("book-list")) || [];
 	nav.style.zIndex = "9999";
 	const bookContainers = document.querySelectorAll(".bookContainer");
 	for (let i = 0; i < bookContainers.length; i++) {
@@ -136,7 +136,7 @@ function fetchEditFormData() {
 
 function pushData(formData) {
 	const bookName = formData.bookName;
-	const bookList = JSON.parse(localStorage.getItem("book-list")) || [];
+
 	const existingBookIndex = bookList.findIndex(
 		(book) => Object.keys(book)[0] === bookName
 	);
@@ -168,7 +168,6 @@ function formValidation() {
 	});
 }
 function editForm(bookName) {
-	const bookList = JSON.parse(localStorage.getItem("book-list")) || [];
 	const bookData = bookList.find((book) => Object.keys(book)[0] === bookName)[
 		bookName
 	];
@@ -196,7 +195,7 @@ function editFormValidation() {
 			}
 		}
 		const bookName = document.querySelector("#editbookName").value;
-		const bookList = JSON.parse(localStorage.getItem("book-list")) || [];
+
 		const existingBookIndex = bookList.findIndex(
 			(book) => Object.keys(book)[0] === bookName
 		);
@@ -211,7 +210,6 @@ function editFormValidation() {
 
 function deleteFunc(deleteBtn, bookName, author) {
 	deleteBtn.addEventListener("click", () => {
-		const bookList = JSON.parse(localStorage.getItem("book-list")) || [];
 		const updatedBookList = bookList.filter(
 			(book) => Object.keys(book)[0] !== bookName && author
 		);
@@ -309,7 +307,6 @@ function bookDiv(bookData) {
 }
 const hiLoElements = document.querySelectorAll(".hiLo");
 function sortHiLo() {
-	let bookList = JSON.parse(localStorage.getItem("book-list"));
 	if (!bookList || bookList.length === 0) {
 		return;
 	}
@@ -328,7 +325,6 @@ hiLoElements.forEach((hiLoElement) => {
 const loHiElements = document.querySelectorAll(".loHi");
 
 function sortLoHi() {
-	let bookList = JSON.parse(localStorage.getItem("book-list"));
 	if (!bookList || bookList.length === 0) {
 		return;
 	}
@@ -345,7 +341,6 @@ loHiElements.forEach((loHiElement) => {
 });
 
 function sortCategoryDesc() {
-	let bookList = JSON.parse(localStorage.getItem("book-list"));
 	if (!bookList || bookList.length === 0) {
 		return;
 	}
@@ -364,7 +359,6 @@ categoryEls.forEach((el) => {
 });
 
 function sortAuthorDesc() {
-	let bookList = JSON.parse(localStorage.getItem("book-list"));
 	if (!bookList || bookList.length === 0) {
 		return;
 	}
@@ -417,8 +411,7 @@ function search() {
 		.map((input) => input.value.trim())
 		.filter((value) => value !== "");
 
-	const books = JSON.parse(localStorage.getItem("book-list"));
-	const matches = books.filter(
+	const matches = bookList.filter(
 		(book) =>
 			book[Object.keys(book)[0]].bookName
 				.toLowerCase()
@@ -447,7 +440,9 @@ searchBtn.forEach((element) => {
 });
 
 const logo = document.querySelector("#logo");
-logo.addEventListener("click", checkLocalStorage);
+logo.addEventListener("click", () => {
+	location.reload();
+});
 
 const filterliMobile = document.querySelector("#filterliMobile");
 const filterUp = document.querySelector("#filterUp");
