@@ -1,0 +1,22 @@
+#1 
+    Harry Potter and The Philosopher's Stone
+    Fantasy Novel
+    20
+    1997
+    J. K. Rowling
+    https://m.media-amazon.com/images/I/81m1s4wIPML.jpg
+#2
+    Altorių Šešėly
+    Novel
+    16
+    1933
+    Vincas Mykolaitis-Putinas
+    https://thumb.knygos-static.lt/a-csGTeWdWLbsMxKxzRP0EkXxL0=/fit-in/800x800/filters:cwatermark(static/wm.png,500,75,30)/images/books/2361/1462873235_altoriu-sesely.jpg
+
+#3 
+    Harry Potter and the Deathly Hallows
+    Fantasy Novel
+    24
+    2007
+    J. K. Rowling
+    https://upload.wikimedia.org/wikipedia/en/a/a9/Harry_Potter_and_the_Deathly_Hallows.jpg
